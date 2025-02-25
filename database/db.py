@@ -1,4 +1,4 @@
-from sqlmodel import create_engine, Session, SQLModel
+from sqlmodel import Session, SQLModel, create_engine
 import os
 from dotenv import load_dotenv
 
@@ -11,7 +11,7 @@ if not DATABASE_URL:
 engine = create_engine(DATABASE_URL, echo=True)
 
 
-def create_db_and_tables():
+def init_db():
     SQLModel.metadata.create_all(engine)
 
 
