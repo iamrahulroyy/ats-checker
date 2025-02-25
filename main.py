@@ -25,6 +25,7 @@ origins = [
     "http://localhost:3000",
     "https://ats-checker-production.up.railway.app",
     "https://ats-checker-production.up.railway.app:3000",
+    "https://ats-checker-bq614xrmq-rahulscodes.vercel.app",
 ]
 
 app.add_middleware(
