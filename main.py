@@ -20,9 +20,13 @@ async def startup():
 async def shutdown():
     print("App is shutting down!")
 
-origins = ["http://localhost:3000",
-           "https://ats-checker-production.up.railway.app"
-           ]
+
+origins = [
+    "http://localhost:3000",
+    "https://ats-checker-production.up.railway.app",
+    "https://ats-checker-production.up.railway.app:3000",
+]
+
 app.add_middleware(
     CORSMiddleware,
     allow_origins=origins,
