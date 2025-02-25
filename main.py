@@ -26,7 +26,7 @@ origins = [
     "https://ats-checker-production.up.railway.app",
     "https://ats-checker-production.up.railway.app:3000",
     "https://ats-checker-bq614xrmq-rahulscodes.vercel.app",
-    "https://ats-checker-ui-five.vercel.app/"
+    "https://ats-checker-ui-five.vercel.app",  
 ]
 
 app.add_middleware(
