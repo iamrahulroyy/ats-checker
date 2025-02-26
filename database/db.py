@@ -151,34 +151,13 @@ def init_db():
         raise
 
 
-@contextmanager
 def get_session():
-    """Provide a transactional scope around a series of operations"""
-    if circuit_breaker.is_open():
-        raise Exception("Circuit breaker is open. Database session not created.")
-
-    session = None
+    """Database session dependency"""
+    session = Session(engine)
     try:
-
-        @retry_with_backoff(retries=3)
-        def _get_session_with_retry():
-            return Session(engine)
-
-        session = _get_session_with_retry()
         yield session
-        session.commit()
-        circuit_breaker.record_success()
-
-    except Exception as e:
-        if session:
-            session.rollback()
-        circuit_breaker.record_failure()
-        logger.error(f"Database session error: {e}")
-        raise
-
     finally:
-        if session:
-            session.close()
+        session.close()
 
 
 if __name__ == "__main__":
